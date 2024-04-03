@@ -1,0 +1,211 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+/*     background-color: #f0f0f0; */
+    background-image: url('../img/fondo2.jpg');
+    background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.container {
+    width: 63%;
+    margin: auto;
+/*     padding: 5px; */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.producto {
+    display: flex;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.contenido {
+/* 	width: 50%; */
+    display: block;
+}
+.imagen img {	
+	margin-top: 10%;
+    width: 100%;
+    border-radius: 10px 0 0 10px;
+}
+
+.detalles {
+    padding: 20px;
+    width: 65%;
+}
+
+.detalles h2 {
+    color: #333;
+}
+
+.detalles p {
+    color: #666;
+}
+
+.plataforma {
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.capturas {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.capturas img {
+	width: 30%;
+	margin: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: transform 0.3s ease;
+}
+
+.capturas img:hover {
+  transform: scale(1.1);
+}
+
+.valoracion-general {
+    background-color: purple;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline;
+    margin-right: 10px; /* Ajusta según sea necesario */
+}
+
+.valoracion {
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.valoracion input {
+    display: none;
+}
+
+.valoracion label {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+/* Estilo para el hover de las estrellas */
+.valoracion input:hover ~ label,
+.valoracion input:hover ~ label:hover {
+    color: #ffd700; /* Color de estrella rellena */
+}
+
+/* Estilo para la selección de las estrellas */
+.valoracion input:checked ~ label,
+.valoracion input:checked ~ label:hover,
+.valoracion input:checked ~ label:hover ~ label {
+    color: #ffd700; /* Color de estrella rellena */
+}
+
+.comprar{
+	margin-top: 20px;
+	text-align: center;
+}
+
+a {
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+.precio {
+	background-color: #d0d0d0; /* Fondo gris claro */
+    color: #053f61; /* Color de fuente que destaque pero suave */
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    float: right; /* Alinea el precio a la derecha */
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.modal-img {
+    max-width: 80%;
+    max-height: 80%;
+    margin: auto; /* Para centrar la imagen horizontalmente */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos CSS para las flechas */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

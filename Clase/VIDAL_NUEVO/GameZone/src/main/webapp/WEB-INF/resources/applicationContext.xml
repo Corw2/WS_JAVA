@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/data/repository https://www.springframework.org/schema/data/repository/spring-repository.xsd
+        http://www.springframework.org/schema/context classpath:spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- Configuración del DataSource -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/GameZone" />
+        <property name="username" value="Vidal" />
+        <property name="password" value='Laudrup10&amp;' />
+    </bean>
+
+    <!-- Configuración del EntityManagerFactory con Hibernate -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="entidades" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="MYSQL" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <!-- Configuración específica de Hibernate -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <!-- Otros ajustes de Hibernate -->
+            </props>
+        </property>
+    </bean>
+
+    <!-- Configuración del TransactionManager -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <!-- Escaneo de componentes y repositorios -->
+    <jpa:repositories base-package="repository" />
+
+    <!-- Habilitar el escaneo de componentes -->
+    <context:component-scan base-package="controller" />
+    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="repository"/>
+    <context:component-scan base-package="interface"/>
+    
+    <context:property-placeholder location="classpath:/WEB-INF/resources/properties/application.properties"/>
+
+    <!-- Habilitar el soporte de anotaciones MVC -->
+    <mvc:annotation-driven />
+
+</beans>

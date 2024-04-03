@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> TEMPORIZADOR </h1>
+			
+			
+			<script type="text/javascript">
+			
+				// EJECUCIÓN INMEDIATA (no hay función):
+				//setTimeout(alert("HOLA") , 3000);
+				
+				
+				// EJECUCIÓN RETARDADA A 3 SEGUNDOS ... se llama a la función.
+				//
+				//setTimeout( function() { alert("HOLA"); } , 3000 );
+				//			
+				//setTimeout( () => alert("HOLA"), 3000 );
+				
+				/*
+				alert("ESPERA 5 SEGUNDOS Y PULSA PARA CONTINUAR \n... NO SE INICIA EL TEMPORIZADOR");				
+				setTimeout( () => alert("HOLA MUNDO"), 3000 );				
+				*/
+				
+				
+				
+				const saludar = function() {
+					alert("HOLA COMO ESTAS !!!");
+				}
+				
+				
+				//setTimeout(funcion, retardo);
+				
+				//setTimeout(saludar(), 3000);		// MAL ... LO QUE QUIERE TEMPORIZADOR ES EL CUERPO
+													//			DE LA FUNCIÓN ... QUÍTALE LOS ().
+				
+													
+				//setTimeout(saludar, 3000);		// OK
+				
+				
+				//setTimeout( function() {alert("HOLA COMO ESTAS !!!");} , 3000);	// OK		
+								
+				//setTimeout( () => {alert("HOLA COMO ESTAS !!!");} , 3000); 			// OK
+				
+				setTimeout( () => alert("HOLA COMO ESTAS !!!") , 3000);			// OK
+				
+			</script>
+			
+
+		</div>
+		
+	</body>
+
+</html>

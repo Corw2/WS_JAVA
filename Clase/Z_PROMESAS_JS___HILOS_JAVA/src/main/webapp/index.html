@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> PROMESAS JAVASCRIPT </h1>
+			
+			<br/>
+			
+			<div id="pantalla"></div>
+			
+			<br/>
+			
+			<script type="text/javascript">
+			
+				const RETARDO = 1000;
+			
+				// DEFINIR EL OBJETO PROMESA (requiere 2 parámetros == 2 funciones callback)
+				
+				const promesa = new Promise( function(resolve, reject) {
+					
+					// EJECUCIÓN INMEDIATA (no se le asocia una función al temporizador):
+					//setTimeout(resolve("HOLA"), 3000);
+					//
+					//
+					// TEMPORIZADA:
+					//setTimeout( function() {resolve("HOLA");}, 3000);					// FORMA TRADICIONAL.
+					//setTimeout( () => resolve("HOLA PROMESA JAVASCRIPT"), 3000);		// FORMA ARROW.
+				
+					//const dado = parseInt(Math.random() * 2); 	// [0,1]					
+					//alert("HA SALIDO EL ... " + dado);
+					
+					
+					const dado = parseInt(Math.random() * 3); 	// [0,1,2]
+					
+					
+					// PARA JAVASCRIPT, NO PARA JAVA, UN 0 ES FALSE MIENTRAS QUE UN 1 ES TRUE.										
+					
+					
+					if(dado === 2) {
+						throw "ERROR ... 2";
+					}
+					
+					
+					if(dado) {						
+						setTimeout( function() { resolve("HOLA ... " + dado); }, RETARDO);	// TRADICIONAL
+												
+					} else {						
+						setTimeout( () => reject("ADIOS ... " + dado), RETARDO); // ARROW
+					}
+					
+				} );
+			
+				
+				// UN ALERT NO DETIENE LA EJECUCIÓN DEL CÓDIGO QUE LE SIGUE EN ESCRITURA.
+				// [object Promise]
+				//
+				//alert("MOSTRAR EL OBJETO PROMESA: " + promesa);
+
+				/*
+				const R = function(respuesta) {alert(respuesta)};				
+				promesa.then(R);
+				*/
+				
+				
+				promesa
+					.then( function(respuesta) {alert("THEN: " + respuesta)} )			// resolve
+					.catch( function(respuesta) {alert("CATCH: " + respuesta)} )		// reject | excepción
+				
+				
+				
+				/*
+				document.getElementById("pantalla").innerHTML += 
+									"MOSTRAR EL OBJETO PROMESA: " + promesa;
+				*/
+				
+				// ESTO SE HACE AUNQUE EL ALERT SIGA PRESENTE EN PANTALLA (NO BLOQUEA):
+					
+				// promesa.then( function(respuesta) { alert(respuesta); } );				
+				// promesa.then( (respuesta) => alert(respuesta) );
+				
+				/*
+				promesa.then( (respuesta) => 
+									document.getElementById("pantalla").innerHTML += 
+																	"<br/><br/>" + respuesta);
+				*/
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>
